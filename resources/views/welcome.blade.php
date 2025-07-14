@@ -1,7 +1,5 @@
 @extends('layouts.user-app')
 
-@section('title', 'Skilline Landing Page')
-
 @section('content')
     <div class="bg-green-300" id="home">
         <div class="max-w-screen-xl px-8 mx-auto flex flex-col lg:flex-row items-start">
