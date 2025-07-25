@@ -9,8 +9,8 @@
                     Di tangan yang tepat, sampah bisa menjadi berkah. Mari bersama menciptakan lingkungan bersih
                     dan bernilai melalui daur ulang dan kepedulian.
                 </p>
-                <img src="{{ asset('assets/images/login.svg') }}"
-                    alt="Ilustrasi Daur Ulang" class="w-full h-auto mx-auto mt-6" />
+                <img src="{{ asset('assets/images/login.svg') }}" alt="Ilustrasi Daur Ulang"
+                    class="w-full h-auto mx-auto mt-6" />
             </div>
         </div>
 
@@ -28,11 +28,18 @@
                 <div class="mb-4 text-sm text-red-600">
                     <ul class="list-disc pl-5 space-y-1">
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li>
+                                @if ($error === 'These credentials do not match our records.')
+                                    Email atau password yang Anda masukkan salah.
+                                @else
+                                    {{ $error }}
+                                @endif
+                            </li>
                         @endforeach
                     </ul>
                 </div>
             @endif
+
 
             <form method="POST" action="{{ route('login') }}" class="space-y-5">
                 @csrf
@@ -57,8 +64,7 @@
                     <a href="{{ route('password.request') }}" class="text-green-600 hover:underline">Lupa password?</a>
                 </div>
 
-                <button type="submit"
-                    class="w-full py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition">
+                <button type="submit" class="w-full py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition">
                     Masuk
                 </button>
             </form>
